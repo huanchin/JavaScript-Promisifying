@@ -10,3 +10,16 @@ const lotteryPromise = new Promise((resolve, reject) => {
 });
 
 lotteryPromise.then((res) => console.log(res)).catch((err) => console.log(err));
+
+/*** promisifying setTimeout ****/
+const wait = function (seconds) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(2).then(() => {
+    console.log("I wait for 2 seconds");
+    return wait(1);
+  })
+  .then(() => console.log("I wait for 1 seconds"));
