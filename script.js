@@ -18,8 +18,30 @@ const wait = function (seconds) {
   });
 };
 
-wait(2).then(() => {
-    console.log("I wait for 2 seconds");
+wait(1).then(() => {
+    console.log("1 second passed");
     return wait(1);
   })
-  .then(() => console.log("I wait for 1 seconds"));
+  .then(() => {
+    console.log("2 seconds passed");
+    return wait(1);
+  })
+  .then(() => {
+    console.log("3 seconds passed");
+    return wait(1);
+  })
+  .then(() => console.log("I wait for 4 seconds"));
+
+/*** compare to setTimeout callback hell ***/
+setTimeout(() => {
+  console.log("1 second passed");
+  setTimeout(() => {
+    console.log("2 seconds passed");
+    setTimeout(() => {
+      console.log("3 seconds passed");
+      setTimeout(() => {
+        console.log("I wait for 4 seconds");
+      }, 1000);
+    }, 1000);
+  }, 1000);
+}, 1000);
