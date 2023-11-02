@@ -45,3 +45,9 @@ setTimeout(() => {
     }, 1000);
   }, 1000);
 }, 1000);
+
+/*** create a promise that immediately resolved ***/
+Promise.resolve("resolve immediately").then((res) => console.log(res));
+
+/*** create a promise that immediately rejected ***/
+Promise.reject("reject immediately").catch((rej) => console.log(rej));
